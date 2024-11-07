@@ -1,0 +1,37 @@
+<aside>
+🏋🏻 **Esercizio**
+
+Per ogni milestone evidenziate:
+
+- quale fosse la sfida da affrontare
+- come l’avete affrontata
+- perchè l’avete risolta in questo modo
+
+Cercate di essere il più chiari possibile: descrivete in modo chiaro e conciso tutte le azioni intraprese per raggiungere ogni traguardo, in modo che sia comprensibile anche per i non tecnici.
+
+</aside>
+
+**Milestone 1**
+Creare un componente che contenga un campo di input una select.
+Questo componente servirà sia per il primo input che per il secondo ricevendo tramite props la lista delle valute.
+
+**Milestone 2**
+Effettuare all’avvio dell’applicazione una chiamata all’API (con axios) per popolare le due select con la lista delle valute. La prima select avrà come valore selezionato di default "Euro" e la seconda "United State Dollar".
+
+**Milestone 3**
+Ogni volta che l’utente scrive qualcosa in uno dei due input bisognerà fare in modo che venga effettuata una chiamata all’API per ottenere il valore convertito nella valuta selezionata.
+
+**Milestone 4**
+Al cambio di un valore selezionato in una delle due select bisognerà effettuare una nuova chiamata all'API per ottenere il nuovo valore convertito nella valuta corretta.
+
+**Bonus 1**
+Disabilitare la currency nella select in relazione all’altra selezionata (evitare conversione su due currency uguali).
+
+**Bonus 2**
+Aggiungere un componente che contenga il grafico (potete utilizzare la libreria Apex Charts) del rapporto dei valori delle due valute selezionate nelle due select.
+
+**Bonus 3**
+Utilizzare axios con **async**/**await** al posto della sintassi **then**/**catch**.
+
+esecuzione milestone 1 
+-creazione del componente AppInput
