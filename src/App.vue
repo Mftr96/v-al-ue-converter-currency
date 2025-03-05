@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import AppInput from './components/AppInput.vue';
 export default {
     components:{
@@ -8,16 +9,28 @@ export default {
 data() {
 
     return {
+        apiMounted:{},
+        
 
     }
 
 },
 
 methods: {
-
+ ciao(){
+    console.log("ciao");
+ },
+ 
 },
 
-mounted() {
+created() {
+    axios.get("https://api.frankfurter.app/currencies")
+    .then((response) =>{
+        //Stampo in console  i risultati
+        console.log(response.data);
+        //salvo la ricerca in una variabile 
+        this.apiMounted=response.data;
+    });
 
 }
 
@@ -28,11 +41,7 @@ mounted() {
 </script>
 
 <template>
-    <!-- passare dati delle valute tramite props  -->
-    <AppInput/>
-    <AppInput/> 
-    
- 
+    <AppInput :apiMounted="apiMounted"/>
 </template>
 
 <style scoped>

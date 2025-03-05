@@ -35,3 +35,102 @@ Utilizzare axios con **async**/**await** al posto della sintassi **then**/**catc
 
 esecuzione milestone 1 
 -creazione del componente AppInput
+
+
+esecuzione milestone 2
+-installare axios x
+-importare axios in App x
+-effettuare chiamata API al mounted per recuperare le valute x
+-passare tramite props le valute ai componenti AppInput x
+
+andiamo a installare tramite comando da terminale axios 
+```bash
+npm i axios
+```
+importiamo axios in app con la seguente riga 
+```js 
+import axios from axios 
+```
+
+scrivere chiamata axios al mounted (vedere come efettuare chiamata),
+salvare il risultato in una variabile e passarla tramite props ai componenti 
+
+milestone 3
+-scrivere chiamata API (vedere se nel computed o nei methods)
+-eventlistener all'input che faccia chiamata API al keyup in uno dei due input
+ cosa mi serve per la chiamata API
+ -salvare i dati dei due input in due variabili
+-salvare le opzioni dalla select in due variabili
+
+milestone 4
+fare in modo che in tutte e due gli input ci sia la richiesta  API 
+
+base per la chiamata API
+https://api.frankfurter.app
+
+
+chiamata api che recupera i valori della giornata di oggi 
+https://api.frankfurter.app/latest
+
+l'idea è che faccio la chiamata API moltiplicando il numero dell'input 
+salvato nella variabile con il valore del cambio valuta che trovo 
+-forse devo convertire il valore da stringa a Numero (parse.int)
+
+per la chiamata api
+- allo scrivere dell'input parte la chiamata api
+- la chiamata api utilizza :
+- il valore scritto dell'input
+-i valori nelle select 
+link chiamata api per funzione 
+https://api.frankfurter.app/latest?=base=(variabile select 1)&amount=(valore input numerico)
+
+
+
+function(from,to,amount){
+    axios.get(`https://api.frankfurter.app/latest?=base=${from}&symbols=${to}&`)
+    .then((response)=>{
+        const convertedAmount=(amount *response.data.rates[to]).toFixed(2);
+        this.input2=convertedAmount;
+    });
+}
+
+da leo di brave 
+<template>
+  <select v-model="selezionato" @change="handleChange">
+    <option v-for="opzione in opzioni" :key="opzione.value" :value="opzione.value">
+      {{ opzione.text }}
+    </option>
+  </select>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      selezionato: '', // Opzione predefinita
+      opzioni: [] // Array di opzioni
+    }
+  },
+  mounted() {
+    this.caricaOpzioni();
+  },
+  methods: {
+    caricaOpzioni() {
+      this.$http.get('https://tuo-dominio.com/api/valori')
+        .then(response => {
+          this.opzioni = response.data.map((item) => ({
+            value: item.id,
+            text: item.nome
+          }));
+          this.selezionato = this.opzioni[0].value; // Seleziona l'opzione predefinita
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    handleChange() {
+      console.log(this.selezionato);
+    }
+  }
+}
+</script>
